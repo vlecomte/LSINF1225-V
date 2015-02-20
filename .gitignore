@@ -1,0 +1,24 @@
+# Some temp files of editors
+.*.swp
+*~
+
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.toc
+*.gz
+*.bcf
+*.out
+*.run.xml
+*(busy)
+
+# Random junk
+*.lnk
+# Compressed folders
+*.zip
+# GIMP files
+*.xcf
