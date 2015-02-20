@@ -9,7 +9,16 @@ Ce document résume les modifications et extensions de notre projet par rapport 
 ## Extensions
 
 - **Choix de la langue** : Obligatoire.
-
-- **Gestion du personnel** : En particulier, un panel pour le gestionnaire permettant de voir toutes les commandes traitées par les serveurs et donc d'apprécier leur efficacité à la tâche.
-
+- **Graphiques** : En particulier, un panel pour le gestionnaire permettant de voir toutes les commandes traitées par les serveurs et donc d'apprécier leur efficacité à la tâche.
 - **Stockage externe** : Beaucoup mieux pour la démonstration, surtout avec les commandes des clients.
+- **Rapports** : Si on a le temps.
+- **Salle et tables** : Écran de sélection des tables.
+- **Produits composés** : Comme au restaurant mais pas le restaurant.
+- **Options de gestionnaire** :
+- **Gameification** : Entre serveurs ? Réduc pour meilleure table ?
+- **Recherche avancée** : Plein de boutons qui créent une requête.
+
+### Dans le rapport
+
+- Recherche avancée
+- Produits composés
