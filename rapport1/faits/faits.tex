@@ -1,37 +1,68 @@
 \documentclass[a4paper,10pt]{article}
 
 \usepackage{../../latex/mystyle}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 
 \begin{document}
 
+\begin{center}
+\begin{tabu} to \textwidth {lX[c]r}
+    Michel de Broux & \large{\textbf{Faits élémentaires}} & Charles Momin \\
+    Simon Lardinois & LSINF1225 & Valentin Rombouts \\
+    Victor Lecomte & Groupe V & Harold Somers \\
+    \hline
+\end{tabu}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
 \begin{tabu}{lll}
     Membre 1 & Relation & Membre 2 \\
     \hline
-    \entity{Utilisateur}{login}{karateswag22} & possède l'e-mail & \val{"karateswag22@hotmail.be"} \\
-    \entity{Utilisateur}{login}{karateswag22} & a le mot de passe & \val{"aanO0i9eh"} \\
-    \entity{Utilisateur}{login}{karateswag22} & est de grade & \val{"client"} \\
+    \entity{Utilisateur}{login}{tiffany} & est de grade & \val{"client"} \\
     \entity{Utilisateur}{login}{jeff} & est de grade & \val{"serveur"} \\
-    \entity{Utilisateur}{login}{karateswag22} & utilise la langue & \val{"français"} \\
-    \entity{Utilisateur}{login}{karateswag22} & commande & \entity{Commande}{numéro}{42} \\
-    \entity{Commande}{numéro}{42} & est à la table & \val{7} \\
-    \entity{Commande}{numéro}{42} & a été payée à & \val{21/12/2012 12:12} \\
-    \entity{Commande}{numéro}{43} & a été payée à & (pas encore) \\
+    \entity{Utilisateur}{login}{tiffany} & possède l'e-mail & \val{"tiffany@hotmail.be"} \\
+    \entity{Utilisateur}{login}{jeff} & possède l'e-mail & \val{"jeff@hotmail.be"} \\
+    \entity{Utilisateur}{login}{tiffany} & a le mot de passe & \val{"karateswag22"} \\
+    \entity{Utilisateur}{login}{jeff} & a le mot de passe & \val{"ilovetiffany"} \\
+    \entity{Utilisateur}{login}{tiffany} & utilise la langue & \val{"français"} \\
+    \entity{Utilisateur}{login}{jeff} & utilise la langue & \val{"anglais"} \\
+    \entity{Utilisateur}{login}{tiffany} & commande & \entity{Commande}{numéro}{42} \\
+    \entity{Utilisateur}{login}{tiffany} & commande & \entity{Commande}{numéro}{43} \\
+    \entity{Commande}{numéro}{42} & est à la table & \val{1} \\
+    \entity{Commande}{numéro}{43} & est à la table & \val{3} \\
+    \entity{Commande}{numéro}{42} & a été payée à & \val{21/12/2012 11:53} \\
+    \textcolor{lightgray}{\entity{Commande}{numéro}{43}} & \textcolor{lightgray}{a été payée à} & \textcolor{lightgray}{(pas encore)\footnote{\label{gris}Les lignes en gris désignent des faits élémentaires absents. (On ne peut pas utiliser de négations.)}} \\
     \entitytwo{Détail}{commande}{42}{heure}{11:45} & est un(e) & \entity{Consommation}{nom}{Maes 25cl} \\
     \entitytwo{Détail}{commande}{42}{heure}{11:45} & a été servie par & \entity{Utilisateur}{login}{jeff} \\
-    \entitytwo{Détail}{commande}{42}{heure}{12:01} & est un(e) & \entity{Consommation}{nom}{Mazout} \\
-    \entitytwo{Détail}{commande}{42}{heure}{12:01} & a été servie par & (pas encore) \\
-    \entity{Consommation}{nom}{Maes 25cl} & coûte & \val{2€25} \\
+    \entitytwo{Détail}{commande}{43}{heure}{18:01} & est un(e) & \entity{Consommation}{nom}{Gin tonic} \\
+    \textcolor{lightgray}{\entitytwo{Détail}{commande}{43}{heure}{18:01}} & \textcolor{lightgray}{a été servie par} & \textcolor{lightgray}{(pas encore)\,$^1$} \\
+    \entity{Consommation}{nom}{Maes 25cl} & coûte & \val{1€80} \\
+    \entity{Consommation}{nom}{Gin tonic} & coûte & \val{6€00} \\
     \entity{Consommation}{nom}{Maes 25cl} & est de type & \entity{Type}{nom}{bière} \\
-    \entity{Consommation}{nom}{Maes 25cl} & est décrite par & \entity{Description}{titre}{Maes} \\
-    \entity{Consommation}{nom}{Maes 25cl} & utilise \texttt{1 bouteille} & \entity{Ingrédient}{nom}{Maes 25cl} \\
-    \entity{Consommation}{nom}{Mazout} & utilise \texttt{17cl} & \entity{Ingrédient}{nom}{Pils au fût} \\
-    \entity{Consommation}{nom}{Mazout} & utilise \texttt{8cl} & \entity{Ingrédient}{nom}{Coca-Cola} \\
-    \entity{Type}{nom}{bière} & est illustrée par & \val{"biere.png"} \\
-    \entity{Description}{titre}{Maes} & est illustrée par & \val{"maes.png"} \\
-    \entity{Description}{titre}{Maes} & est décrite par & \val{"Bonne bière. :)"} \\
-    \entity{Ingrédient}{nom}{Maes 25cl} & est en quantité & \val{33} \\
-    \entity{Ingrédient}{nom}{Maes 25cl} & est en quantité max. & \val{100} \\
-    \entity{Ingrédient}{nom}{Maes 25cl} & est en quantité seuil & \val{20} \\
+    \entity{Consommation}{nom}{Gin tonic} & est de type & \entity{Type}{nom}{cocktail} \\
+    \entity{Consommation}{nom}{Maes 25cl} & est décrit(e) par & \entity{Description}{titre}{Maes} \\
+    \entity{Consommation}{nom}{Gin tonic} & est décrit(e) par & \entity{Description}{titre}{Gin tonic} \\
+    \entity{Consommation}{nom}{Maes 25cl} & utilise \val{1 bouteille} & \entity{Ingrédient}{nom}{Maes 25cl} \\
+    \entity{Consommation}{nom}{Gin tonic} & utilise \val{1 bouteille} & \entity{Ingrédient}{nom}{Tonic} \\
+    \entity{Consommation}{nom}{Gin tonic} & utilise \val{5cl} & \entity{Ingrédient}{nom}{Gin} \\
+    \entity{Type}{nom}{bière} & est illustré par & \val{"biere.png"} \\
+    \entity{Type}{nom}{cocktail} & est illustré par & \val{"cocktail.png"} \\
+    \entity{Description}{nom}{Maes} & est illustrée par & \val{"maes.jpg"} \\
+    \entity{Description}{nom}{Maes} & est décrite par & \val{"maes.txt"} \\
+    \entity{Description}{nom}{Gin tonic} & est illustrée par & \val{"Gin tonic.jpg"} \\
+    \entity{Description}{nom}{Gin tonic} & est décrite par & \val{"Gin tonic.txt"} \\
+    \entity{Ingrédient}{nom}{Maes 25cl} & est en quantité & \val{33 bouteilles} \\
+    \textcolor{lightgray}{\entity{Ingrédient}{nom}{Maes 25cl}} & \textcolor{lightgray}{est en quantité max.} & \textcolor{lightgray}{(pas de max)\,$^1$} \\
+    \entity{Ingrédient}{nom}{Maes 25cl} & est en quantité seuil & \val{20 bouteilles} \\
+    \entity{Ingrédient}{nom}{Tonic} & est en quantité & \val{6 bouteilles} \\
+    \entity{Ingrédient}{nom}{Tonic} & est en quantité max. & \val{25 bouteilles} \\
+    \entity{Ingrédient}{nom}{Tonic} & est en quantité seuil & \val{10 bouteilles} \\
+    \entity{Ingrédient}{nom}{Gin} & est en quantité & \val{1.5L} \\
+    \entity{Ingrédient}{nom}{Gin} & est en quantité max. & \val{7L} \\
+    \entity{Ingrédient}{nom}{Gin} & est en quantité seuil & \val{1L} \\
 \end{tabu}
+\end{center}
 
 \end{document}
