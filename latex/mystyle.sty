@@ -75,7 +75,9 @@
 
 % Project-specific
 % Entity, shorthand notation
-\newcommand{\entity}[3]{\textbf{#1} (#2) \texttt{#3}}
+\newcommand{\val}[1]{\texttt{#1}}
+\newcommand{\entity}[3]{\textbf{#1} (#2) \val{#3}}
+\newcommand{\entitytwo}[5]{\textbf{#1} (#2) \val{#3} (#4) \val{#5}}
 
 % Multiple footnotes with hyperref
 \let\oldFootnote\footnote

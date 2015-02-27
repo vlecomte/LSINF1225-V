@@ -1,0 +1,37 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{../../latex/mystyle}
+
+\begin{document}
+
+\begin{tabu}{lll}
+    Membre 1 & Relation & Membre 2 \\
+    \hline
+    \entity{Utilisateur}{login}{karateswag22} & possède l'e-mail & \val{"karateswag22@hotmail.be"} \\
+    \entity{Utilisateur}{login}{karateswag22} & a le mot de passe & \val{"aanO0i9eh"} \\
+    \entity{Utilisateur}{login}{karateswag22} & est de grade & \val{"client"} \\
+    \entity{Utilisateur}{login}{jeff} & est de grade & \val{"serveur"} \\
+    \entity{Utilisateur}{login}{karateswag22} & utilise la langue & \val{"français"} \\
+    \entity{Utilisateur}{login}{karateswag22} & commande & \entity{Commande}{numéro}{42} \\
+    \entity{Commande}{numéro}{42} & est à la table & \val{7} \\
+    \entity{Commande}{numéro}{42} & a été payée à & \val{21/12/2012 12:12} \\
+    \entity{Commande}{numéro}{43} & a été payée à & (pas encore) \\
+    \entitytwo{Détail}{commande}{42}{heure}{11:45} & est un(e) & \entity{Consommation}{nom}{Maes 25cl} \\
+    \entitytwo{Détail}{commande}{42}{heure}{11:45} & a été servie par & \entity{Utilisateur}{login}{jeff} \\
+    \entitytwo{Détail}{commande}{42}{heure}{12:01} & est un(e) & \entity{Consommation}{nom}{Mazout} \\
+    \entitytwo{Détail}{commande}{42}{heure}{12:01} & a été servie par & (pas encore) \\
+    \entity{Consommation}{nom}{Maes 25cl} & coûte & \val{2€25} \\
+    \entity{Consommation}{nom}{Maes 25cl} & est de type & \entity{Type}{nom}{bière} \\
+    \entity{Consommation}{nom}{Maes 25cl} & est décrite par & \entity{Description}{titre}{Maes} \\
+    \entity{Consommation}{nom}{Maes 25cl} & utilise \texttt{1 bouteille} & \entity{Ingrédient}{nom}{Maes 25cl} \\
+    \entity{Consommation}{nom}{Mazout} & utilise \texttt{17cl} & \entity{Ingrédient}{nom}{Pils au fût} \\
+    \entity{Consommation}{nom}{Mazout} & utilise \texttt{8cl} & \entity{Ingrédient}{nom}{Coca-Cola} \\
+    \entity{Type}{nom}{bière} & est illustrée par & \val{"biere.png"} \\
+    \entity{Description}{titre}{Maes} & est illustrée par & \val{"maes.png"} \\
+    \entity{Description}{titre}{Maes} & est décrite par & \val{"Bonne bière. :)"} \\
+    \entity{Ingrédient}{nom}{Maes 25cl} & est en quantité & \val{33} \\
+    \entity{Ingrédient}{nom}{Maes 25cl} & est en quantité max. & \val{100} \\
+    \entity{Ingrédient}{nom}{Maes 25cl} & est en quantité seuil & \val{20} \\
+\end{tabu}
+
+\end{document}
