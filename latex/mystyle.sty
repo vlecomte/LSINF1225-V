@@ -73,10 +73,22 @@
 \newcommand{\barg}{\mathrm{barg}} % Unit symbol for pressure relative to 1 bar
 
 % Project-specific
-% Entity, shorthand notation
-\newcommand{\val}[1]{\texttt{#1}}
-\newcommand{\entity}[3]{\textbf{#1} (#2) \val{#3}}
+\newcommand{\val}[1]{\texttt{#1}} % Value
+\newcommand{\entity}[3]{\textbf{#1} (#2) \val{#3}} % Entity, shorthand notation
 \newcommand{\entitytwo}[5]{\textbf{#1} (#2) \val{#3} (#4) \val{#5}}
+
+\newcommand{\header}[1]{
+\begin{center}
+\begin{tabu} to \textwidth {lX[c]r}
+    \toprule
+    Michel de Broux & \large{\textbf{#1}} & Charles Momin \\
+    Simon Lardinois & LSINF1225 & Valentin Rombouts \\
+    Victor Lecomte & Groupe V & Harold Somers \\
+    \bottomrule
+\end{tabu}
+\end{center}
+\vspace{0.5cm}
+}
 
 % Multiple footnotes with hyperref
 \let\oldFootnote\footnote
