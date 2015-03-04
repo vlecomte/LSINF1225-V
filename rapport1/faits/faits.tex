@@ -15,14 +15,14 @@
     \entity{Utilisateur}{login}{tiffany} & possède l'e-mail & \val{"tiffany@hotmail.be"} \\
     \entity{Utilisateur}{login}{tiffany} & a le mot de passe & \val{"karateswag22"} \\
     \entity{Utilisateur}{login}{tiffany} & utilise la langue & \val{"français"} \\
-    \entity{Utilisateur}{login}{tiffany} & commande & \entity{Commande}{numéro}{42} \\
-    \entity{Utilisateur}{login}{tiffany} & commande & \entity{Commande}{numéro}{43} \\
     \entity{Utilisateur}{login}{jeff} & est de grade & \val{"serveur"} \\
     \entity{Utilisateur}{login}{jeff} & possède l'e-mail & \val{"jeff@hotmail.be"} \\
     \entity{Utilisateur}{login}{jeff} & a le mot de passe & \val{"ilovetiffany"} \\
     \entity{Utilisateur}{login}{jeff} & utilise la langue & \val{"anglais"} \\
+    \entity{Commande}{numéro}{42} & est commandée par & \entity{Utilisateur}{login}{tiffany} \\
     \entity{Commande}{numéro}{42} & est à la table & \val{1} \\
     \entity{Commande}{numéro}{42} & a été payée à & \val{21/12/2012 11:53} \\
+    \entity{Commande}{numéro}{43} & est commandée par & \entity{Utilisateur}{login}{tiffany} \\
     \entity{Commande}{numéro}{43} & est à la table & \val{3} \\
     \textcolor{lightgray}{\entity{Commande}{numéro}{43}} & \textcolor{lightgray}{a été payée à} & \textcolor{lightgray}{(pas encore)\footnotemark[1]} \\
     \entitytwo{Détail}{commande}{42}{heure}{11:45} & est une & \entity{Consommation}{nom}{Maes 25cl} \\

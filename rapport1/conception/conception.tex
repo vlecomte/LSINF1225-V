@@ -7,6 +7,10 @@
 
 \header{Choix de conception}
 
+\section{Différences par rapport à l'énoncé}
+
+La différence principale de notre projet par rapport à l'énoncé est que le client peut lui-même commander des boissons et demander l'addition. Il n'a pas besoin de passer par l'intérmédiaire du serveur, bien que ce soit possible: dans ce cas les commandes ne seront pas associées à un utilisateur, mais seulement à la table.
+
 \section{Description des entités}
 
 \begin{tabu}{X}
@@ -106,7 +110,10 @@ Les ingrédients sont identifiés de manière unique par leur nom d'ingrédient.
 \toprule
 
 \begin{itemize}
-    \item thoeaunth
+    \item porte le numéro: la commande étant identifiée par son numéro, cette relation est obligatoire pour la commande, la commande porte un seul numéro, et un numéro est porté par une seule commande.
+    \item est commandée par: une commande est soit liée à l'utilisateur qui l'a passée, soit indépendante d'un utilisateur, dans le cas où le client n'a pas l'application et a commandé de manière conventionnelle via le serveur. Donc une commande ne peut avoir qu'un utilisateur; mais un utilisateur peut avoir plusieurs commandes au cours du temps, et une commande n'a pas obligatoirement un utilisateur.
+    \item est à la table: la table sera utilisée pour livrer les détails de la commande, donc la table est obligatoire pour la commande, et une commande ne peut se trouver qu'à une table; mais plusieurs commandes peuvent se trouver à la même table, s'il y a plusieurs clients, ou au cours du temps.
+    \item a été payée à: donne les date et heure auxquelles la commande a été payée; si elle n'a pas encore été payée, aucune date/heure ne sera liée. Par conséquent, une commande ne peut être payée qu'à une date; mais plusieurs commandes peuvent être payées à la même date/heure, et une commande n'a pas obligatoirement une date/heure de paiement.
 \end{itemize}
 \\\\
 \end{tabu}
