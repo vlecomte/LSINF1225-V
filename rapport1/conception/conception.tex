@@ -38,9 +38,9 @@ Les commandes sont identifiées de manière unique par leur numéro de commande.
 \textbf{Détail} \\
 \toprule
 
-Un détail représente une boisson ajoutée à une commande. Quand plusieurs boissons identiques sont commandées, nous créons un détail pour chacune d'entre elles. Nous considérons qu'il n'y a là pas de réelle redondance: en effet, les détails peuvent avoir été ajoutés, commandés ou livrés à des moments différents, et certains d'entre eux peuvent avoir déjà été commandés et livrés tandis que d'autres ne sont encore qu'ajoutés à la commande, et pas confirmés. De plus, la gestion des détails sous cette forme est significativement plus simple.
+Un détail représente une boisson ajoutée à une commande. Quand plusieurs boissons identiques sont commandées, nous créons un détail pour chacune d'entre elles. Nous considérons qu'il n'y a là pas de réelle redondance: en effet, les détails peuvent avoir été ajoutés ou servis à des moments différents, et certains d'entre eux peuvent avoir déjà été servis tandis que d'autres viennent seulement d'être ajoutés. De plus, la gestion des détails sous cette forme est significativement plus simple.
 
-\textsl{Exemples: le détail de la commande \no42 ajouté à 11h45, une Maes 25cl, ajoutée à 11h45 et servie par Jeff; et le détail de la commande \no43 ajouté à 18h01, un gin tonic, pas encore confirmé ni servi.}
+\textsl{Exemples: le détail de la commande \no42 ajouté à 11h45, une Maes 25cl, servie par Jeff à 11h47; et le détail de la commande \no43 ajouté à 18h01, un gin tonic, pas encore servi.}
 
 Les détails sont identifiés de manière unique par la commande dont ils font partie et l'heure d'ajout du détail, pris ensemble. \\\\
 \end{tabu}
