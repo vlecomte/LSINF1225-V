@@ -16,7 +16,7 @@ Pour notre projet, nous avons décidé qu'il serait possible au client de comman
 
 \textsl{Exemples: Tiffany, une cliente, et Jeff, un serveur.}
 
-Les utilisateurs sont identifiés uniquement par leur login. \\\\
+Les utilisateurs sont identifiés de manière unique par leur login. \\\\
 \end{tabu}
 
 \begin{tabu}{X}
@@ -27,7 +27,7 @@ Dans notre conception, une commande représente l'ensemble des boissons consomm�
 
 \textsl{Exemples: la commande \no42 par Tiffany pour sa pose de midi, elle a bu une Maes et a déjà payé; et la commande \no43 après son travail, elle a ajouté un Gin Tonic et n'a pas encore payé.}
 
-Les commandes sont identifiées uniquement par leur numéro de commande. \\\\
+Les commandes sont identifiées de manière unique par leur numéro de commande. \\\\
 \end{tabu}
 
 \begin{tabu}{X}
@@ -38,7 +38,7 @@ Un détail représente une boisson ajoutée à une commande. Quand plusieurs boi
 
 \textsl{Exemples: le détail de la commande \no42 ajouté à 11h45, une Maes 25cl, ajoutée à 11h45 et servie par Jeff; et le détail de la commande \no43 ajouté à 18h01, un gin tonic, pas encore confirmé ni servi.}
 
-Les détails sont identifiés uniquement par la commande dont ils font partie et l'heure d'ajout du détail, pris ensemble. \\\\
+Les détails sont identifiés de manière unique par la commande dont ils font partie et l'heure d'ajout du détail, pris ensemble. \\\\
 \end{tabu}
 
 \begin{tabu}{X}
@@ -49,7 +49,7 @@ Une consommation représente une boisson sur la carte. Si plusieurs boissons ide
     
 \textsl{Exemples: la consommation Maes 25cl, une bière qui coûte 1.80€; et la consommation Gin Tonic, un cocktail à 6.00€ composé de Gin et de Tonic.}
 
-Les consommations sont identifiées uniquement par leur nom de consommation. \\\\
+Les consommations sont identifiées de manière unique par leur nom de consommation. \\\\
 \end{tabu}
 
 \begin{tabu}{X}
@@ -60,7 +60,7 @@ Un type représente une catégorie de consommation. Le type peut-êtr affiché s
 
 \textsl{Exemples: le type bière, le type cocktail.}
 
-Les types sont identifiés uniquement par leur nom de type. \\\\
+Les types sont identifiés de manière unique par leur nom de type. \\\\
 \end{tabu}
 
 \begin{tabu}{X}
@@ -71,7 +71,7 @@ Une description représente le texte descriptif d'un produit et son image. Des c
 
 \textsl{Exemples: la description Maes, avec comme image une bouteille de Maes, qui décrit aussi bien un Maes 25cl qu'une Maes 30cl; la description Gin Tonic, qui ne décrit que le Gin Tonic.}
 
-Les descriptions sont identifiées uniquement par leur nom de description. \\\\
+Les descriptions sont identifiées de manière unique par leur nom de description. \\\\
 \end{tabu}
 
 \begin{tabu}{X}
@@ -82,10 +82,33 @@ Un ingrédient représente le stock d'une matière première, par bouteille ou e
 
 \textsl{Exemples: l'ingrédient Maes 25cl, utilisé une bouteille à la fois; l'ingrédient Gin, utilisé par petites quantités dans le Gin Tonic.}
 
-Les ingrédients sont identifiés uniquement par leur nom d'ingrédient. \\\\
+Les ingrédients sont identifiés de manière unique par leur nom d'ingrédient. \\\\
 \end{tabu}
 
-\section{Description des relations}
+\section{Précisions sur les relations}
 
+\begin{tabu}{X}
+\textbf{Liées à Utilisateur}\\
+\toprule
+
+\begin{itemize}
+    \item possède le login: l'utilisateur étant identifié par son login, cette relation est obligatoire pour l'utilisateur, l'utilisateur a un seul login, et un login appartient à un seul utilisateur.
+    \item possède l'e-mail: l'e-mail étant utilisé notamment pour récupérer un mot de passe oublié, cette relation est obligatoire pour l'utilisateur, l'utilisateur a un seul e-mail, et un e-mail appartient à un seul utilisateur.
+    \item a le mot de passe: pour des raisons de sécurité, le mot de passe est obligatoire pour l'utilisateur, et un utilisateur ne peut avoir qu'un mot de passe; un mot de passe peut par contre être utilisé par plusieurs utilisateurs.
+    \item est de grade: un utilisateur doit avoir un des trois grades \val{"client"}, \val{"serveur"} et \val{"admin"}, donc le grade est obligatoire pour l'utilisateur, et un utilisateur ne peut avoir qu'un grade; mais plusieurs utilisateurs peuvent avoir le même grade.
+    \item utilise la langue: la langue indiquée sera utilisée pour afficher l'application, par conséquent la langue est obligatoire pour l'utilisateur, et un utilisateur ne peut utiliser qu'une langue à la fois; mais plusieurs utilisateurs peuvent utiliser la même langue.
+\end{itemize}
+\\\\
+\end{tabu}
+
+\begin{tabu}{X}
+\textbf{Liées à Commande}\\
+\toprule
+
+\begin{itemize}
+    \item thoeaunth
+\end{itemize}
+\\\\
+\end{tabu}
 
 \end{document}
