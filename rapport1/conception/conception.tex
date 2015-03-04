@@ -9,31 +9,81 @@
 
 \section{Description des entités}
 
-\begin{itemize}
-    \item \textbf{Utilisateur:}
+\begin{tabu}{X}
+\textbf{Utilisateur} \\
+\toprule
+Pour notre projet, nous avons décidé qu'il serait possible au client de commander lui-même des boissons. Dès lors, les utilisateurs de l'application peuvent être de trois types: client, serveur et manager. Ces trois rôles auront chacun leurs privilèges et leurs écrans. Afin d'utiliser l'application, un utilisateur doit s'identifier via un écran de login.
+
+\emph{Exemples: Tiffany, une cliente, et Jeff, un serveur.}
+
+Les utilisateurs sont identifiés uniquement par leur login. \\\\
+\end{tabu}
+
+\begin{tabu}{X}
+\textbf{Commande} \\
+\toprule
+
+Dans notre conception, une commande représente l'ensemble des boissons consommées par un utilisateur entre deux paiements. Quand l'utilisateur commande une boisson, elle est ajoutée à la commande courante, et une fois que l'utilisateur paie, cette commande est fermée et les boissons suivantes, le cas échéant, seront ajouté à une nouvelle commande.
+
+\emph{Exemples: la commande \no42 par Tiffany pour sa pose de midi, elle a bu une Maes et a déjà payé; et la commande \no43 après son travail, elle a ajouté un Gin Tonic et n'a pas encore payé.}
+
+Les commandes sont identifiées uniquement par leur numéro de commande. \\\\
+\end{tabu}
+
+\begin{tabu}{X}
+\textbf{Détail} \\
+\toprule
+
+Un détail représente une boisson ajoutée à une commande. Quand plusieurs boissons identiques sont commandées, nous créons un détail pour chacune d'entre elles. Nous considérons qu'il n'y a là pas de réelle redondance: en effet, les détails peuvent avoir été ajoutés, commandés ou livrés à des moments différents, et certains d'entre eux peuvent avoir déjà été commandés et livrés tandis que d'autres ne sont encore qu'ajoutés à la commande, et pas confirmés. De plus, la gestion des détails sous cette forme est significativement plus simple.
+
+\emph{Exemples: le détail de la commande \no42 ajouté à 11h45, une Maes 25cl, ajoutée à 11h45 et servie par Jeff; et le détail de la commande \no43 ajouté à 18h01, un gin tonic, pas encore confirmé ni servi.}
+
+Les détails sont identifiés uniquement par la commande dont ils font partie et l'heure d'ajout du détail, pris ensemble. \\\\
+\end{tabu}
+
+\begin{tabu}{X}
+\textbf{Consommation} \\
+\toprule
+
+Une consommation représente une boisson sur la carte. Si plusieurs boissons identiques sont commandées, elles pointent toutes vers la même consommation. Les consommations sont liées notamment à des types de consommation, des descriptions et des ingrédients pour les spécifier.
     
-    Pour notre projet, nous avons décidé qu'il serait possible au client de commander lui-même des boissons. Dès lors, les utilisateurs de l'application peuvent être de trois types: client, serveur et manager. Ces trois rôles auront chacun leurs privilèges et leurs écrans. Afin d'utiliser l'application, un utilisateur doit s'identifier via un écran de login.
-    
-    \emph{Exemples:} Tiffany, une cliente, et Jeff, un serveur.
-    
-    Les utilisateurs sont identifiés uniquement par leur login.
-    
-    \item \textbf{Commande:}
-    
-    Dans notre conception, une commande représente l'ensemble des boissons consommées par un utilisateur entre deux paiements. Quand l'utilisateur commande une boisson, elle est ajoutée à la commande courante, et une fois que l'utilisateur paie, cette commande est fermée et les boissons suivantes, le cas échéant, seront ajouté à une nouvelle commande.
-    
-    \emph{Exemples:} la commande \no42 par Tiffany pour sa pose de midi, elle a bu une Maes et a déjà payé; et la commande \no43 après son travail, elle a ajouté un Gin Tonic et n'a pas encore payé.
-    
-    Les commandes sont identifiées uniquement par leur numéro de commande.
-    
-    \item \textbf{Détail:}
-    
-    Un détail représente une boisson ajoutée à une commande. Quand plusieurs boissons identiques sont commandées, nous créons un détail pour chacune d'entre elles. Nous considérons qu'il n'y a là pas de réelle redondance: en effet, les détails peuvent avoir été ajoutés, commandés ou livrés à des moments différents, et certains d'entre eux peuvent avoir déjà été commandés et livrés tandis que d'autres ne sont encore qu'ajoutés à la commande, et pas confirmés. De plus, la gestion des détails sous cette forme est significativement plus simple.
-    
-    \emph{Exemples:} le détail de la commande \no42 ajouté à 11h45, une Maes 25cl, ajoutée à 11h45 et servie par Jeff; et le détail de la commande \no43 ajouté à 18h01, un gin tonic, pas encore confirmé ni servi. 
-    
-    Les détails sont identifiés uniquement par la commande dont ils font partie et l'heure d'ajout du détail, pris ensemble.
-\end{itemize}
+\emph{Exemples: la consommation Maes 25cl, une bière qui coûte 1.80€; et la consommation Gin Tonic, un cocktail à 6.00€ composé de Gin et de Tonic.}
+
+Les consommations sont identifiées uniquement par leur nom de consommation. \\\\
+\end{tabu}
+
+\begin{tabu}{X}
+\textbf{Type} \\
+\toprule
+
+Un type représente une catégorie de consommation. Le type peut-êtr affiché sur la carte sous forme d'une icône.
+
+\emph{Exemples: le type bière, le type cocktail.}
+
+Les types sont identifiés uniquement par leur nom de type. \\\\
+\end{tabu}
+
+\begin{tabu}{X}
+\textbf{Description} \\
+\toprule
+
+Une description représente le texte descriptif d'un produit et son image. Des consommations qui ne diffèrent que par la taille mais qui sont le même produit vont partager la même description.
+
+\emph{Exemples: la description Maes, avec comme image une bouteille de Maes, qui décrit aussi bien un Maes 25cl qu'une Maes 30cl; la description Gin Tonic, qui ne décrit que le Gin Tonic.}
+
+Les descriptions sont identifiées uniquement par leur nom de description. \\\\
+\end{tabu}
+
+\begin{tabu}{X}
+\textbf{Ingrédient} \\
+\toprule
+
+Un ingrédient représente le stock d'une matière première, par bouteille ou en vrac. Si une consommation utilise plusieurs ingrédients différents, il sera lié à ces ingrédients avec des relations indiquant aussi la quantité consommée. L'ingrédient possède des informations sur le stock actuel, le seuil et le maximum.
+
+\emph{Exemples: l'ingrédient Maes 25cl, utilisé une bouteille à la fois; l'ingrédient Gin, utilisé par petites quantités dans le Gin Tonic.}
+
+Les ingrédients sont identifiés uniquement par leur nom d'ingrédient. \\\\
+\end{tabu}
 
 \section{Description des relations}
 
