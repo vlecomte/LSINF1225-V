@@ -182,4 +182,22 @@ Les ingrédients sont identifiés de manière unique par leur nom d'ingrédient.
 \\\\
 \end{tabu}
 
+\section{Démarche d'écriture des faits élémentaires}
+
+Pour l'écriture des faits élémentaires, nous avons décidé d'être le plus cohérent possible avec le reste des documents tout en respectant les contraintes des faits élémentaires.
+
+Dès lors:
+\begin{itemize}
+    \item nous avons distingué entité et valeur, les premières étant écrites avec la notation abrégée et les deuxièmes en police monospace;
+    \item nous avons mis les faits sous une forme structurée et régulière avec premier membre, relation et deuxième membre.
+\end{itemize}
+
+Mais:
+\begin{itemize}
+    \item outre les formes abrégées des entités, les phrases sont en français correct;
+    \item les relations absentes sont mises en évidence dans le tableau mais ne sont pas considérées comme des faits: on n'utilise pas la valeur \val{NULL} pour les exprimer.
+\end{itemize}
+
+Grâce à ces mesures, la traduction en schéma ORM a été presque automatique, tout en gardant des faits valides.
+
 \end{document}
