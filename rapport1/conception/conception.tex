@@ -124,8 +124,60 @@ Les ingrédients sont identifiés de manière unique par leur nom d'ingrédient.
 
 \begin{itemize}
     \item est une: la consommation spécifie le produit que ce détail représente, donc cette relation est obligatoire pour le détail et un détail n'a qu'une seule consommation; mais une consommation peut avoir plusieurs détails, car elle peut-être commandée plusieurs fois.
+    \item a été ajouté à: la date/heure d'ajout sert avec la consommation à identifier le détail, donc cette relation est obligatoire pour le détail et un détail n'a qu'une seule consommation; mais plusieurs détails peuvent être ajoutés au même moment, pourvu que leurs consommations ne soient pas les mêmes.
     \item a été servi à: la date/heure de livraison de désigne le moment où le serveur indique qu'il sert le détail, et est vide si le détail n'est pas encore servi. Par conséquent, un détail n'a qu'une seule date/heure de livraison; mais la relation n'est pas obligatoire pour le détail, et plusieurs détails peuvent être servis au même moment, ce qui est fréquent.
     \item a été servi par: donne le serveur qui s'est chargé de livrer le détail, ou rien si le détail n'est pas encore livré; donc un détail ne peut avoir qu'un seul serveur; mais la relation n'est pas obligatoire pour le détail, et plusieurs détails peuvent être servis par le même serveur, ce qui est fréquent.
+\end{itemize}
+\\\\
+\end{tabu}
+
+\begin{tabu}{X}
+\textbf{Liées à Consommation}\\
+\toprule
+
+\begin{itemize}
+    \item a pour nom: la consommation étant identifiée par son nom, cette relation est obligatoire pour la consommation, une consommation n'a qu'un seul nom, et un nom ne correspond qu'à une consommation.
+    \item coûte: le prix sera utiliser pour calculer la facture d'une commande, donc cette relation est obligatoire pour la consommation, et à une consommation ne correspond qu'un prix; mais plusieurs consommations peuvent avoir le même prix.
+    \item est de type: le type permettra notamment d'afficher la miniature du type dans la carte, et de trier les boissons par catégorie; donc cette relation est obligatoire pour la consommation, et à une consommation ne correspond qu'un type; mais plusieurs consommations peuvent évidemment avoir le même type.
+    \item est décrite par: la description sera utilisée pour l'écran de détails / d'ajout de consommation, donc cette relation est obligatoire pour la consommation, et à une consommation ne correspond qu'une seule description; mais plusieurs consommations peuvent avoir la même description, si il s'agit du même produit à plusieurs quantités par exemple.
+    \item utilise $X$ de: cette relation sera utilisée pour indiquer que la consommation fait diminuer le stock d'un produit d'une certaine quantité; c'est une relation ternaire. Il est évident qu'elle n'est ni obligatoire ni unique pour la quantité $X$ utilisée. Elle est unique pour un couple consommation-ingrédient particulier, car s'il y avait deux utilisations pour le même couple, elles pourraient être fusionnées, en utilisant pour quantité la some des quantités. Par contre, elle n'est pas obligatoire pour la consommation, car on peut imaginer un produit, comme l'eau du robinet, qui ne dépende pas d'un stock; et elle n'est pas obligatoire pour l'ingrédient, car on peut imaginer un igrédient disponible, mais pas ou pas encore disponible sur la carte.
+\end{itemize}
+\\\\
+\end{tabu}
+
+\begin{tabu}{X}
+\textbf{Liées à Type}\\
+\toprule
+
+\begin{itemize}
+    \item a pour nom: le type étant identifié par son nom, cette relation est obligatoire pour le type, un type n'a qu'un seul nom, et un nom ne correspond qu'à un type.
+    \item est illustré par: l'icône de type sera affichée dans la carte pour identifier le type, donc cette relation est obligatoire pour le type, un type n'a qu'une seule icône, et une icône ne correspond qu'à un type.
+\end{itemize}
+\\\\
+\end{tabu}
+
+\begin{tabu}{X}
+\textbf{Liées à Description}\\
+\toprule
+
+\begin{itemize}
+    \item a pour nom: la description étant identifié par son nom ou titre, cette relation est obligatoire pour la description, une description n'a qu'un seul nom, et un nom ne correspond qu'à une description.
+    \item est illustrée par: l'image de la description accompagnera le texte de la description, en est représentative, et dans notre modèle il s'agit du nom du fichier contenant l'image. Cette relation est obligatoire pour le description, une description n'a qu'une seule image, et une image ne correspond qu'à une description.
+    \item est décrite par: cette relation lie la description à son texte, donc cette relation est obligatoire pour la description, une description n'a qu'un seul texte, et un texte ne correspond qu'à une description.
+\end{itemize}
+\\\\
+\end{tabu}
+
+\begin{tabu}{X}
+\textbf{Liées à Ingrédient}\\
+\toprule
+
+\begin{itemize}
+    \item a pour nom: l'ingrédient étant identifié par son nom, cette relation est obligatoire pour l'ingrédient, un ingrédient n'a qu'un seul nom, et un nom ne correspond qu'à un seul ingrédient.
+    \item est d'unités: les unités de l'ingrédient permettent de déterminer ce que signifie en pratique les quantités utilisées par les consommations. Par conséquent, cette relation est obligatorie pour l'ingrédient, et un ingrédient a des unités uniques; mais plusieurs ingrédients peuvent avoir les mêmes unités.
+    \item est en quantité: cette relation désigne la quantité de l'ingrédient actuellement en stock, donc cette relation est obligatoire pour l'ingrédient, et un ingrédient a une seule quantité actuelle; mais plusieurs ingrédients peuvent être actuellement aux mêmes quantités.
+    \item est en quantité max.: cette relation désigne la quantité maximale de l'ingrédient que le stock peut contenir, ce qui peut ne pas être spécifié; donc un ingrédient a une seule quantité maximale, mais cette relation n'est pas obligatoire pour l'ingrédient, et plusieurs ingrédients peuvent avoir les mêmes quantités maximales.
+    \item est en quantité seuil: cette relation désigne la quantité en-dessous de laquelle l'ingrédient est en quantité critique, et un avertissement est affiché aux administrateurs, mais elle est facultative. Par conséquent, un ingrédient a une seule quantité seuil, mais cette relation n'est pas obligatoire pour l'ingrédient, et plusieurs ingrédients peuvent avoir les mêmes quantités seuil.
 \end{itemize}
 \\\\
 \end{tabu}
