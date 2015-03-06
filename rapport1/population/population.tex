@@ -1,0 +1,142 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{../../latex/mystyle}
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+
+\begin{document}
+
+\header{Populations représentatives}
+
+Comme relations les plus importantes, nous avons choisi toutes les relations entité-entité dans notre modèle.
+\textbf{Attention:} les données présentées ici sont en quantité plus importante que dans les autres documents, afin de représenter le plus fidèlement possible les relations principales; seuls les faits élémentaires présentés dans le fichier \texttt{faits.pdf} sont repris dans tous les documents.
+
+Dans les descriptions des populations, pour éviter des lourdeurs, les parties suivantes des notations d'entités ont été enlevées:
+\begin{itemize}
+    \item \entity{Utilisateur}{login}{[...]};
+    \item \entity{Commande}{numéro}{[...]};
+    \item \entitytwo{Détail}{commande}{[...]}{heure}{[...]};
+    \item \entity{Consommation}{nom}{[...]};
+    \item \entity{Type}{nom}{[...]};
+    \item \entity{Description}{nom}{[...]};
+    \item \entity{Ingrédient}{nom}{[...]}.
+\end{itemize}
+
+Les tableaux de population se situent sur les deux pages suivantes.
+
+\newpage
+
+\begin{table}[h]
+    \centering
+    \begin{tabu}{cc}
+        Commande & Utilisateur \\
+        \toprule
+        \val{42} & \val{"tiffany"} \\
+        \val{43} & \val{"tiffany"} \\
+        \textcolor{lightgray}{44} & \textcolor{lightgray}{(aucun)\footnotemark[1]} \\
+        \val{45} & \val{"michelle"} \\
+        \val{46} & \val{"charles"} \\
+    \end{tabu}
+    \caption{Relation «est commandée par»}
+\end{table}
+
+\footnotetext[1]{Les lignes en gris indiquent des relations absentes. Ici, la commande n'est pas liée à un utilisateur car le client n'utilise pas l'application et c'est le serveur qui a créé la commande.}
+
+\begin{table}[h]
+    \centering
+    \begin{tabu}{cc}
+        Détail & Commande \\
+        \toprule
+        \val{42, 11:45} & \val{42} \\
+        \val{43, 18:01} & \val{43} \\
+        \val{44, 19:17} & \val{44} \\
+        \val{45, 21:32} & \val{45} \\
+        \val{46, 21:38} & \val{46} \\
+        \val{45, 21:47} & \val{45} \\
+        \val{46, 22:04} & \val{46} \\
+    \end{tabu}
+    \caption{Relation «est dans la commande»}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabu}{cc}
+        Détail & Consommation \\
+        \toprule
+        \val{42, 11:45} & \val{"Maes 25cl"} \\
+        \val{43, 18:01} & \val{"Gin Tonic"} \\
+        \val{44, 19:17} & \val{"Tisane Tilleul"} \\
+        \val{45, 21:32} & \val{"Tisane Tilleul"} \\
+        \val{46, 21:38} & \val{"Cheval Blanc (bout.)"} \\
+        \val{45, 21:47} & \val{"Maes 50cl"} \\
+        \val{46, 22:04} & \val{"Eau du robinet"} \\
+    \end{tabu}
+    \caption{Relation «est une»}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabu}{cc}
+        Consommation & Utilisateur \\
+        \toprule
+        \val{42, 11:45} & \val{"jeff"} \\
+        \textcolor{lightgray}{\val{43, 18:01}} & \textcolor{lightgray}{(pas encore)\footnotemark[2]} \\
+        \val{44, 19:17} & \val{"amelie"} \\
+        \val{45, 21:32} & \val{"jeff"} \\
+        \val{46, 21:38} & \val{"amelie"} \\
+        \val{45, 21:47} & \val{"amelie"} \\
+        \textcolor{lightgray}{\val{46, 22:04}} & \textcolor{lightgray}{(pas encore)\footnotemark[2]} \\
+    \end{tabu}
+    \caption{Relation «a été servi par»}
+\end{table}
+
+\footnotetext[2]{Ici, l'absence de serveur ayant livré la commande signifie que la commande n'a pas encore été livrée. Nous avons une pensée émue pour Tiffany qui attend son Gin Tonic depuis 18h01.}
+
+\begin{table}[h]
+    \centering
+    \begin{tabu}{cc}
+        Consommation & Type \\
+        \toprule
+        \val{"Maes 25cl"} & \val{"bière"} \\
+        \val{"Maes 50cl"} & \val{"bière"} \\
+        \val{"Gin Tonic"} & \val{"cocktail"} \\
+        \val{"Tisane Tilleul"} & \val{"tisane"} \\
+        \val{"Cheval Blanc (bout.)"} & \val{"vin"} \\
+        \val{"Eau du robinet"} & \val{"eau"} \\
+    \end{tabu}
+    \caption{Relation «est de type»}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabu}{cc}
+        Consommation & Description \\
+        \toprule
+        \val{"Maes 25cl"} & \val{"Maes"} \\
+        \val{"Maes 50cl"} & \val{"Maes"} \\
+        \val{"Gin Tonic"} & \val{"Gin Tonic"} \\
+        \val{"Tisane Tilleul"} & \val{"Tisane Tilleul"} \\
+        \val{"Cheval Blanc (bout.)"} & \val{"Château Cheval Blanc"} \\
+        \val{"Eau du robinet"} & \val{"Eau du robinet"} \\
+    \end{tabu}
+    \caption{Relation «est décrite par»}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabu}{ccc}
+        Consommation & Quantité & Ingrédient \\
+        \toprule
+        \val{"Maes 25cl"} & \val{1} & \val{"Maes 25cl"} \\
+        \val{"Maes 50cl"} & \val{0.50} & \val{"Maes au fût"} \\
+        \val{"Gin Tonic"} & \val{1} & \val{"Tonic"} \\
+        \val{"Gin Tonic"} & \val{0.05} & \val{"Gin"} \\
+        \val{"Tisane Tilleul"} & \val{1} & \val{"Sachet tilleul"} \\
+        \val{"Cheval Blanc (bout.)"} & \val{1} & \val{"Cheval Blanc"} \\
+        \textcolor{lightgray}{\val{"Eau du robinet"}} & & \textcolor{lightgray}{(aucun)\footnotemark[3]}
+    \end{tabu}
+    \caption{Relation «utilise $X$ de»}
+\end{table}
+
+\footnotetext[3]{Ici, la consommation n'a pas d'ingrédient associé car l'eau du robinet est considérée comme illimitée et inépuisable.}
+
+\end{document}
