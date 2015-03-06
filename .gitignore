@@ -16,6 +16,9 @@
 *.run.xml
 *(busy)
 
+# Backups
+*backup*
+
 # Random junk
 *.lnk
 # Compressed folders
