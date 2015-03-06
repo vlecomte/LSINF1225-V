@@ -2,35 +2,35 @@
 
 -- Compter combien de types de boissons différentes on peut trouver sur la carte de boissons.
 
-SELECT NomType FROM Type 
+SELECT COUNT(NomType) FROM Type
 
 
--– Trouver toutes les boissons qui font partie d’une commande donnée.
+-- Trouver toutes les boissons qui font partie d'une commande donnée.
 
-SELECT NomConso FROM Detail 
+SELECT NomConso FROM Detail
 WHERE NoCommande = 42
 
 
--– Calculer le total pour une commande donnée.
+-- Calculer le total pour une commande donnée.
 
-SELECT sum(C.prix) FROM Consommation C, Detail D 
+SELECT sum(C.prix) FROM Consommation C, Detail D
 WHERE D.NoCommande = 42 and D.NomConso = C.NomConso
 
 
--– Trouver toutes les boissons, et leur nombre, vendues par un serveur donné.
+-- Trouver toutes les boissons, et leur nombre, vendues par un serveur donné.
 
-SELECT NomConso, COUNT(NomConso) FROM Detail 
+SELECT NomConso, COUNT(NomConso) FROM Detail
 WHERE Identifiant = "jeff" 
 GROUP BY NomConso
 
 
--– Calculer l’addition pour une table donnée, sachant que cette table peut avoir fait plusieurs commandes.
+-- Calculer l'addition pour une table donnée, sachant que cette table peut avoir fait plusieurs commandes.
 
-SELECT sum(Con.Prix) FROM Commande Com, Detail D, Consommation Con 
+SELECT sum(Con.Prix) FROM Commande Com, Detail D, Consommation Con
 WHERE D.NomConso = Con.NomConso and D.NoCommande = Com.NoCommande and Com.NoTable = 1
 
 
--– Trouver toutes les boissons dont ils ne restent plus assez en stock (qui sont en dessous du seuil et qui doivent donc être commandées chez le fournisseur).
+-- Trouver toutes les boissons dont il ne reste plus assez en stock (qui sont en dessous du seuil et qui doivent donc être commandées chez le fournisseur).
 
-SELECT NomIngredient FROM Ingredient 
-WHERE StockActuel < StockSeuil OR StockActuel = 0
+SELECT NomIngredient FROM Ingredient
+WHERE StockActuel < StockSeuil
