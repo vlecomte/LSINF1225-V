@@ -79,26 +79,26 @@
     {\textbf{#1} (#2) \val{#3}}
 \newcommand{\entitytwo}[5] % Same with two characteristics
     {\textbf{#1} (#2) \val{#3} (#4) \val{#5}}
-\newcommand{\story}[4] % User story with "afin de"
+% User story
+\newcommand{\storygen}[2]
 {
     \begin{center}
     \begin{tabu} to \textwidth {X[c]|X[20]}
-        \vspace{-0.25cm}\large{\textbf{#1}} &
-        \textbf{En tant} #2, \textbf{je veux} #3 \textbf{afin de} #4. \\
+        \vspace{-0.25cm}\large{\textbf{#1}} & #2 \\
     \end{tabu}
     \end{center}
 }
-\newcommand{\storyd}[4] % User story with "afin d'"
-{
-    \begin{center}
-    \begin{tabu} to \textwidth {X[c]|X[20]}
-        \vspace{-0.25cm}\large{\textbf{#1}} &
-        \textbf{En tant} #2, \textbf{je veux} #3 \textbf{afin d'}#4. \\
-    \end{tabu}
-    \end{center}
-}
+\newcommand{\story}[4]
+    {\storygen{#1}{\textbf{En tant que} #2, \textbf{je veux} #3 \textbf{afin de} #4.}}
+\newcommand{\storyq}[4]
+    {\storygen{#1}{\textbf{En tant qu'}#2, \textbf{je veux} #3 \textbf{afin de} #4.}}
+\newcommand{\storyd}[4]
+    {\storygen{#1}{\textbf{En tant que} #2, \textbf{je veux} #3 \textbf{afin d'}#4.}}
+\newcommand{\storyqd}[4]
+    {\storygen{#1}{\textbf{En tant qu'}#2, \textbf{je veux} #3 \textbf{afin d'}#4.}}
 
-\newcommand{\header}[1] % Header with our names
+% Header with our names
+\newcommand{\header}[1]
 {
     \begin{center}
     \begin{tabu} to \textwidth {lX[c]r}
