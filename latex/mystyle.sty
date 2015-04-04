@@ -72,30 +72,16 @@
 \newcommand{\jour}{\mathrm{j}} % Unit symbol for a day in French
 \newcommand{\barg}{\mathrm{barg}} % Unit symbol for pressure relative to 1 bar
 
+% Multiple footnotes with hyperref
+\let\oldFootnote\footnote
+\newcommand\nextToken\relax
+
+\renewcommand\footnote[1]{\oldFootnote{#1}\futurelet\nextToken\isFootnote}
+\newcommand\isFootnote{\ifx\footnote\nextToken\textsuperscript{,}\fi}
+
+% ================
 % Project-specific
-\newcommand{\val}[1] % Value
-    {\texttt{#1}}
-\newcommand{\entity}[3] % Entity, shorthand notation
-    {\textbf{#1} (#2) \val{#3}}
-\newcommand{\entitytwo}[5] % Same with two characteristics
-    {\textbf{#1} (#2) \val{#3} (#4) \val{#5}}
-% User story
-\newcommand{\storygen}[2]
-{
-    \begin{center}
-    \begin{tabu} to \textwidth {X[c]|X[20]}
-        \vspace{-0.25cm}\large{\textbf{#1}} & #2 \\
-    \end{tabu}
-    \end{center}
-}
-\newcommand{\story}[4]
-    {\storygen{#1}{\textbf{En tant que} #2, \textbf{je veux} #3 \textbf{afin de} #4.}}
-\newcommand{\storyq}[4]
-    {\storygen{#1}{\textbf{En tant qu'}#2, \textbf{je veux} #3 \textbf{afin de} #4.}}
-\newcommand{\storyd}[4]
-    {\storygen{#1}{\textbf{En tant que} #2, \textbf{je veux} #3 \textbf{afin d'}#4.}}
-\newcommand{\storyqd}[4]
-    {\storygen{#1}{\textbf{En tant qu'}#2, \textbf{je veux} #3 \textbf{afin d'}#4.}}
+% ================
 
 % Header with our names
 \newcommand{\header}[1]
@@ -112,12 +98,30 @@
     \vspace{0.7cm}
 }
 
-% Multiple footnotes with hyperref
-\let\oldFootnote\footnote
-\newcommand\nextToken\relax
+% Value
+\newcommand{\val}[1]{\texttt{#1}}
 
-\renewcommand\footnote[1]{\oldFootnote{#1}\futurelet\nextToken\isFootnote}
-\newcommand\isFootnote{\ifx\footnote\nextToken\textsuperscript{,}\fi}
+% Entity, shorthand notation
+\newcommand{\entity}[3]{\textbf{#1} (#2) \val{#3}}
+\newcommand{\entitytwo}[5]{\textbf{#1} (#2) \val{#3} (#4) \val{#5}}
+
+% User stories
+\newcommand{\storygen}[2]
+{
+    \begin{center}
+    \begin{tabu} to \textwidth {X[c]|X[20]}
+        \vspace{-0.25cm}\large{\textbf{#1}} & #2 \\
+    \end{tabu}
+    \end{center}
+}
+\newcommand{\story}[4]
+    {\storygen{#1}{\textbf{En tant que} #2, \textbf{je veux} #3 \textbf{afin de} #4.}}
+\newcommand{\storyq}[4]
+    {\storygen{#1}{\textbf{En tant qu'}#2, \textbf{je veux} #3 \textbf{afin de} #4.}}
+\newcommand{\storyd}[4]
+    {\storygen{#1}{\textbf{En tant que} #2, \textbf{je veux} #3 \textbf{afin d'}#4.}}
+\newcommand{\storyqd}[4]
+    {\storygen{#1}{\textbf{En tant qu'}#2, \textbf{je veux} #3 \textbf{afin d'}#4.}}
 
 
 \endinput
