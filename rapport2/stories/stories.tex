@@ -1,0 +1,128 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{../../latex/mystyle}
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+
+\begin{document}
+
+\header{User stories}
+
+Les durées estimées lors du \emph{planning poker} sont en unités relatives.
+Toutefois, nous estimons a priori qu'une unité devrait prendre environ une demi-heure.
+
+\section{Gestion des utilisateurs}
+
+\story{5}{que non-inscrit}
+{me créer un compte utilisateur en donnant mon login, mon adresse mail et mon mot de passe}
+{rentrer dans l'application et pouvoir commander des boissons}
+\story{3}{qu'utilisateur}
+{me connecter en rentrant mon login et mon mot de passe}
+{rentrer dans l'application avec mes permissions et mes données}
+\story{3}{que manager}
+{changer le grade d'un utilisateur}
+{donner les droits à un nouveau serveur ou un nouveau manager, ou diminuer les droits d'un employé qui part}
+\story{3}{qu'utilisateur}
+{changer l'adresse mail de mon compte en donnant mon mot de passe}
+{lier mon compte à la bonne adresse si je change mon adresse mail}
+\storyd{5}{qu'utilisateur}
+{changer mon mot de passe en donnant l'ancien et le nouveau deux fois}
+{assurer la sécurité de mes comptes en ligne avec des changements fréquents}
+
+(La suppresion de comptes est-elle encore nécessaire vu qu'il y a un compte par personne et que les haut grades héritent des fonctionnalités des bas grades?)
+
+\section{Affichage de la carte}
+
+Notons que ces fonctionnalités sont aussi accessibles au serveur lorsqu'il passe commande pour une table.
+
+\story{5}{que client}
+{regarder la carte des boissons}
+{choisir ce que je veux boire}
+\storyd{5?}{que client}
+{savoir visuellement sur la carte quand une consommation est écoulée}
+{en commander une autre}
+\storyd{2}{que client}
+{afficher une image et la description d'une consommation}
+{obtenir plus d'informations sur le produit et m'aider dans mon choix}
+
+\section{Gestion du panier}
+
+Chaque utilisateur a un panier auquel il peut ajouter ou enlever des boissons.
+Un client peut l'ajouter à sa commande tandis qu'un serveur peut aussi choisir de l'ajouter à la commande d'une table.
+
+\story{1}{que client ou serveur}
+{ajouter des consommations à mon panier}
+{me souvenir de mes choix ou ceux d'une table et les confirmer plus tard}
+\story{2}{que client ou serveur}
+{retirer des consommations de mon panier}
+{corriger des erreurs de sélection ou prendre en compte des changements d'avis}
+\story{3}{que client ou serveur}
+{afficher mon panier}
+{vérifier que tout est correct}
+
+\section{Passage de commande}
+
+\story{3}{que client}
+{valider mon panier}
+{passer commande auprès des serveurs et me faire livrer}
+\story{3}{que client}
+{sélectionner ma table quand j'ajoute les premières consommations à ma commande}
+{recevoir les boissons au bon endroit}
+\story{3}{que serveur}
+{ajouter mon panier à la commande d'une table}
+{gérer les commandes des clients qui n'ont pas l'application}
+
+\section{Gestion du service}
+
+\story{5}{que serveur}
+{voir le nombre de détails non encore servis groupés par table}
+{choisir la prochaine table que je vais servir}
+\story{3}{que serveur}
+{voir la liste des détails non encore servis pour une table}
+{savoir quels consommations je dois préparer et livrer}
+\storyd{2}{que serveur}
+{marquer les détails d'une table comme servis}
+{éviter qu'un autre serveur ne les voie et ne les serve une deuxième fois}
+
+\section{Addition et paiement}
+
+\story{3}{que client}
+{afficher mon addition avec ses détails}
+{savoir combien je dois payer}
+\story{5?}{que serveur}
+{afficher la liste des totaux à payer pour les clients ou les tables}
+{savoir combien ils doivent payer}
+\story{3}{que serveur}
+{afficher l'addition d'un client ou d'une table avec ses détails}
+{pouvoir expliquer le prix à payer}
+\storyd{1}{que serveur}
+{marquer une commande comme payée}
+{enregistrer le paiement du client et clôturer la commande}
+
+\section{Gestion des stocks}
+
+\story{5}{que manager}
+{voir les stocks des ingrédients et leurs maxima, en mettant en évidence ceux qui sont en-dessous du seuil ou épuisés}
+{déterminer quels ingrédients je dois racheter, et en quelles quantités}
+\storyd{3}{que manager}
+{modifier les stocks enregistrés}
+{actualiser les disponibilités des consommations quand je refais le plein d'un ingrédient}
+\storyd{3?}{que manager}
+{modifier les seuils et les maxima des ingrédients}
+{adapter l'affichage du stock si la vitesse d'écoulement d'ingrédients ou l'espace de stockage changent}
+
+\section{Graphiques}
+
+\story{7?}{que manager}
+{voir un graphique de l'évolution du chiffre d'affaire}
+{me rendre compte de l'évolution de la popularité du bar}
+\storyd{7}{que manager}
+{voir un graphique des boissons les plus consommées}
+{acheter en plus grande quantité les ingrédients qui sont consommés le plus vite}
+\story{7}{que manager}
+{voir un graphique de l'activité de mes meilleurs clients}
+{les récompenser et les fidéliser}
+\story{7}{que manager}
+{voir un graphique décrivant l'efficacité de mes serveurs}
+{vérifier qu'ils travaillent bien, punir les tire-au-flanc et récompenser les meilleurs}
+
+\end{document}
