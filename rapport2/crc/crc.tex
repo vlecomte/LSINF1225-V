@@ -24,7 +24,7 @@ Il correspond à une seule personne.}
 
 \crc{Client}
 {Représente un client, c'est-à-dire quelqu'un qui peut commander des boissons dans le bar.
-Les serveurs et managers peuvent aussi être des clients. Hérite de Utilisateur.}
+Les serveurs et managers peuvent aussi être des clients.}
 {
     --- Afficher la carte & Carte \\
     --- Ajouter une consommation au panier & Consommation \\
@@ -39,7 +39,7 @@ Les serveurs et managers peuvent aussi être des clients. Hérite de Utilisateur
 
 \crc{Serveur}
 {Représente un serveur, c'est-à-dire quelqu'un qui peut servir des boissons dans le bar.
-Les manageurs peuvent aussi être des serveurs. Hérite de Client.}
+Les managers peuvent aussi être des serveurs.}
 {
     --- Confirmer le panier pour une table (créer la commande si nécessaire)
         & Commande, Détail \\
@@ -53,8 +53,7 @@ Les manageurs peuvent aussi être des serveurs. Hérite de Client.}
 \vspace{.7cm}
 
 \crc{Manager}
-{Représente un manager du bar, c'est-à-dire le propriétaire, qui a accès à toutes les fonctionnalités et qui a tous les droits.
-Hérite de Serveur.}
+{Représente un manager du bar, c'est-à-dire le propriétaire, qui a accès à toutes les fonctionnalités et qui a tous les droits.}
 {
     --- Changer le grade d'un utilisateur & Utilisateur \\
     --- Regarder le stock et les seuils & Stock \\
