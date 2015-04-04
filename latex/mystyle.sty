@@ -123,5 +123,21 @@
 \newcommand{\storyqd}[4]
     {\storygen{#1}{\textbf{En tant qu'}#2, \textbf{je veux} #3 \textbf{afin d'}#4.}}
 
+% CRC cards
+\newcommand{\crc}[3]
+{
+    \begin{center}
+    \begin{tabular}{|p{9cm}|p{5cm}|}
+        \hline
+        \multicolumn{2}{|p{14.5cm}|}{\textbf{Classe:} #1} \\
+        \hline
+        \multicolumn{2}{|p{14.5cm}|}{\textbf{Description:} #2} \\
+        \hline
+        \textbf{Responsabilités:} & \textbf{Collaborations:} \\
+        #3
+        \hline
+    \end{tabular}
+    \end{center}
+}
 
 \endinput

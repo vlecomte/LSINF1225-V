@@ -1,0 +1,134 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{../../latex/mystyle}
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+
+\begin{document}
+
+\header{Cartes CRC}
+
+Ces cartes CRC sont une version préliminaire de notre conception orientée objet de l'application.
+Elles ne représentent pas fidèlement la structure finale du programme.
+
+\vspace{.5cm}
+
+\crc{Utilisateur}
+{Représente tout utilisateur de l'application, c'est-à-dire un client, un serveur ou un manager.
+Il correspond à une seule personne.}
+{
+    --- Se connecter & \\
+    --- Changer ses informations & \\
+}
+
+\vspace{.7cm}
+
+\crc{Client}
+{Représente un client, c'est-à-dire quelqu'un qui peut commander des boissons dans le bar.
+Les serveurs et managers peuvent aussi être des clients. Hérite de Utilisateur.}
+{
+    --- Afficher la carte & Carte \\
+    --- Ajouter une consommation au panier & Consommation \\
+    --- Retirer une consommation du panier & Consommation \\
+    --- Afficher le panier & Consommation \\
+    --- Confirmer le panier (créer la commande si nécessaire)
+        & Commande, Détail \\
+    --- Demander l'addition & Commande \\
+}
+
+\vspace{.7cm}
+
+\crc{Serveur}
+{Représente un serveur, c'est-à-dire quelqu'un qui peut servir des boissons dans le bar.
+Les manageurs peuvent aussi être des serveurs. Hérite de Client.}
+{
+    --- Confirmer le panier pour une table (créer la commande si nécessaire)
+        & Commande, Détail \\
+    --- Regarder les détails commandés, groupés par table & Commande, Détail \\
+    --- Voir les détails à servir pour une table & Commande, Détail \\
+    --- Marquer des détails comme servis & Détail \\
+    --- Regarder l'addition d'un client & Client, Commande \\
+    --- Marquer une commande comme payée & Commande \\
+}
+
+\vspace{.7cm}
+
+\crc{Manager}
+{Représente un manager du bar, c'est-à-dire le propriétaire, qui a accès à toutes les fonctionnalités et qui a tous les droits.
+Hérite de Serveur.}
+{
+    --- Changer le grade d'un utilisateur & Utilisateur \\
+    --- Regarder le stock et les seuils & Stock \\
+    --- Changer le stock et les seuils & Stock \\
+    --- Regarder des graphiques & Graphiques \\
+}
+
+\vspace{.7cm}
+
+\crc{Commande}
+{Regroupe les consommations commandées par un utilisateur entre deux paiements.
+Une commande correspond donc à une facture.}
+{
+    --- Ajouter les consommations venant d'un panier & Client, Consommation, Détail \\
+    --- Calculer l'addition & Détail, Consommation \\
+}
+
+\vspace{.7cm}
+
+\crc{Détail}
+{Représente un élément d'une commande, c'est à dire une consommation commandée à un certain moment
+et éventuellement servie à un certain moment par un serveur.}
+{
+    --- Se décompter du stock & Consommation, Stock \\
+    --- Se marquer comme servi & Serveur \\
+}
+
+\vspace{.7cm}
+
+\crc{Consommation}
+{Représente un produit qui se trouve sur la carte, avec son prix, son type, sa description, etc.}
+{
+    --- Afficher sa description & Carte \\
+}
+
+\vspace{.7cm}
+
+\crc{Ingrédient}
+{Représente un ingrédient brut en stock, qui est utilisé, éventuellement en combinaison avec d'autres, pour créer des consommations.}
+{
+    --- Vérifier si sa quantité est en-dessous du seuil. & \\
+    --- Se refournir d'une certaine quantité & \\
+}
+
+\vspace{.7cm}
+
+\crc{Carte}
+{Représente l'ensemble des consommations disponibles dans le bar.}
+{
+    --- Afficher la liste des consommations & Consommation \\
+    --- Trier les boissons par type & Consommation \\
+    --- Se rafraîchir en fonction des stocks & Consommation, Stock \\
+    --- Afficher une description & Consommation \\
+}
+
+\vspace{.7cm}
+
+\crc{Stock}
+{Contient les différents ingrédients qui représentent l'état du stock.}
+{
+    --- Afficher le stock & Manager \\
+    --- Vérifier si un panier prend trop d'ingrédients, et retourner les ingrédients en quantité insuffisante & Consommation, Ingrédient \\
+    --- Décompter un panier du stock & Consommation, Ingrédient \\
+}
+
+\vspace{.7cm}
+
+\crc{Graphiques}
+{Compile des données et affiche des graphiques}
+{
+    --- Graphique de l'évolution du chiffre d'affaires & Commande \\
+    --- Graphique des boissons les plus consommées & Consommation, Détail \\
+    --- Graphique des meilleurs clients & Client, Commande \\
+    --- Graphique de l'efficacité des serveurs & Serveur, Détail \\
+}
+
+\end{document}
