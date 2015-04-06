@@ -28,8 +28,6 @@ Toutefois, nous estimons a priori qu'une unité devrait prendre environ une demi
 {changer mon mot de passe en donnant l'ancien et le nouveau deux fois}
 {assurer la sécurité de mes comptes en ligne avec des changements fréquents}
 
-(La suppresion de comptes est-elle encore nécessaire vu qu'il y a un compte par personne et que les haut grades héritent des fonctionnalités des bas grades?)
-
 \section{Affichage de la carte}
 
 Notons que ces fonctionnalités sont aussi accessibles au serveur lorsqu'il passe commande pour une table.
@@ -37,7 +35,7 @@ Notons que ces fonctionnalités sont aussi accessibles au serveur lorsqu'il pass
 \story{5}{client}
 {regarder la carte des boissons}
 {choisir ce que je veux boire}
-\storyd{5?}{client}
+\storyd{3}{client}
 {savoir visuellement sur la carte quand une consommation est écoulée}
 {en commander une autre}
 \storyd{2}{client}
@@ -70,7 +68,7 @@ Un client peut l'ajouter à sa commande tandis qu'un serveur peut aussi choisir 
 \story{3}{serveur}
 {ajouter mon panier à la commande d'une table}
 {gérer les commandes des clients qui n'ont pas l'application}
-\story{5?}{client ou serveur}
+\story{5}{client ou serveur}
 {avoir un avertissement s'il n'y a pas assez de stock pour servir tout le panier}
 {savoir quels ingrédients sont en stock trop faible et modifier les choix en conséquence}
 
@@ -91,7 +89,7 @@ Un client peut l'ajouter à sa commande tandis qu'un serveur peut aussi choisir 
 \story{3}{client}
 {afficher mon addition avec ses détails}
 {savoir combien je dois payer}
-\story{5?}{serveur}
+\story{5}{serveur}
 {afficher la liste des totaux à payer pour les clients ou les tables}
 {savoir combien ils doivent payer}
 \story{3}{serveur}
@@ -109,25 +107,25 @@ Un client peut l'ajouter à sa commande tandis qu'un serveur peut aussi choisir 
 \storyd{3}{manager}
 {modifier les stocks enregistrés}
 {actualiser les disponibilités des consommations quand je refais le plein d'un ingrédient}
-\storyd{3?}{manager}
+\storyd{3}{manager}
 {modifier les seuils et les maxima des ingrédients}
 {adapter l'affichage du stock si la vitesse d'écoulement d'ingrédients ou l'espace de stockage changent}
 
 \section{Graphiques}
 
-La mise en place d'un système d'affichage de graphiques sera probablement un \textbf{7?}.
+La mise en place d'un système d'affichage de graphiques sera probablement un \textbf{7}.
 Les durées indiquées ci-dessous représentent le temps nécessaire pour ajouter un graphique en plus.
 
-\story{5?}{manager}
+\story{5}{manager}
 {voir un graphique de l'évolution du chiffre d'affaires}
 {me rendre compte de l'évolution de la popularité du bar}
-\storyd{5?}{manager}
+\storyd{5}{manager}
 {voir un graphique des boissons les plus consommées}
 {acheter en plus grande quantité les ingrédients qui sont consommés le plus vite}
-\story{5?}{manager}
+\story{5}{manager}
 {voir un graphique de l'activité de mes meilleurs clients}
 {les récompenser et les fidéliser}
-\story{5?}{manager}
+\story{5}{manager}
 {voir un graphique décrivant l'efficacité de mes serveurs}
 {vérifier qu'ils travaillent bien, punir les tire-au-flanc et récompenser les meilleurs}
 
