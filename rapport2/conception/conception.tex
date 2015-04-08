@@ -1,0 +1,23 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{../../latex/mystyle}
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+
+\begin{document}
+
+\header{Choix de conception}
+
+Nous présentons ici les choix de conception réalisés pour ce second rapport.
+Nous nous concentrons sur la réalisation du schéma UML et des diagrammes de séquence, car les user stories et les cartes CRC représentent plus des phases préliminaires à la conception sur lesquelles il n'y a pas grand chose à ajouter.
+
+\section{Schéma UML}
+
+Notre plus grande difficulté de modélisation était de trouver un juste milieu au niveau de la gestion des données, entre ces deux modèles:
+\begin{itemize}
+    \item \textbf{Modèle 1:}\\ Toute l'information, y compris les données temporaires, est stockée au niveau de la base de donnée, et aucune information n'est stockée en local. L'application se charge uniquement de l'interface graphique et de l'envoi/réception de données. Toute opération dans l'application entraîne une ou plusieurs requêtes.
+    \item \textbf{Modèle 2:}\\ Toute l'information de la base de donnée est stockée en local. Toutes les opérations de lecture et de modification se font en local. À chaque fois qu'une donnée est modifiée, une requête est envoyée pour l'actualiser sur la base de données, et dès qu'une modification par un autre utilisateur est détectée, elle est répercutée sur le modèle local. L'application se charge de tout et la base de données est en second plan pour mémoriser les données à long terme.
+\end{itemize}
+
+Le modèle 1 est celui qui demanderait le moins d'efforts parce que
+
+\end{document}
