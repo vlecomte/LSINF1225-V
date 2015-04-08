@@ -10,7 +10,7 @@
 Nous présentons ici les choix de conception réalisés pour ce second rapport.
 Nous nous concentrons sur la réalisation du schéma UML et des diagrammes de séquence, car les user stories et les cartes CRC représentent plus des phases préliminaires à la conception sur lesquelles il n'y a pas grand chose à ajouter.
 
-\section{Schéma UML}
+\section{Démarche de conception}
 
 Notre plus grande difficulté de modélisation était de trouver un juste milieu au niveau de la gestion des données, entre ces deux modèles:
 \begin{itemize}
@@ -26,6 +26,19 @@ Le modèle 2 demande plus d'efforts car il faut créer toute un structure orient
 
 Toutefois, pour d'autres, comme le décompte d'un panier dans le stock, ce modèle risque d'envoyer une requête pour chaque consommation ajoutée alors que dans le modèle 1, c'est faisable en une seule requête. En effet, ce modèle n'utilise pas les capacités de calcul efficaces de la base de donnée et ne l'utilise que pour la mémorisation.
 
-Afin de limiter le nombre de requêtes tout en gardant une structure correcte et adaptable à n'importe quelle implémentation, il nous fallait isoler de la structure les accès à la base de données, pour s'assurer que les appels sont faits de la manière la plus efficace; et de l'autre côté avoir une structure représentant les données de manière suffisamment complète pour pouvoir faire les opérations les plus courantes, qui ne nécessitent pas d'actualiser la base de données, de manière totalement locale.
+Afin de limiter le nombre de requêtes tout en gardant une structure correcte et adaptable à n'importe quelle implémentation, il nous fallait isoler de la structure les accès à la base de données, pour s'assurer que les appels sont faits de la manière la plus efficace; et de l'autre côté avoir une structure représentant les données de manière suffisamment complète pour pouvoir faire les opérations les plus courantes, qui ne nécessitent pas d'actualiser la base de données, de manière tout à fait locale.
+
+\subsection{La solution: les DAO}
+
+Pour cela, nous avons utilisé le modèle des DAO (Data Access Objects) qui nous a été introduit en cours. De manière simple, il s'agit de séparer la couche de logique (déjà séparée de la couche de présentation) de la couche d'accès aux données.
+
+Cette couche d'accès aux données se représente sous la forme d'une série de classes contenant des méthodes statiques qui fournissent des données ou modifient des valeurs dans la base de données, ou n'importe quelle structure qui pourrait être utilisée pour mémoriser les données. Leur intérêt est de donner accès aux données sans que le modèle lui-même n'ait à se soucier d'où elles viennent.
+
+Les seules garanties sont que ces opérations donnent le bon résultat et qu'elles sont réalisées de la manière la plus efficace possible.
+Dans notre implémentation cela signifie que chaque fonction sera exécutée en une requête, ou du moins un nombre fixe, et que les classes DAO mémoriseront les données fixes pour qu'elles ne doivent être chargées qu'un fois même si les méthodes sont appelées plusieurs fois.
+
+\section{Schéma UML}
+
+Précisons maintenant la structure en nous appuyant sur le schéma UML fourni.
 
 \end{document}

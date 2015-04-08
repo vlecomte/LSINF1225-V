@@ -1,6 +1,4 @@
-                àAjouter    unComposant
     :Client     :Consomm.   :Ingrédient
-=======================================
     .           .           .
 ---># (ajouterPanier)       .
     #           .           .
