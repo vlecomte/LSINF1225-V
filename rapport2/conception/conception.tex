@@ -57,4 +57,19 @@ Précisons maintenant la structure en nous appuyant sur le schéma UML fourni. P
     \item Dans DAOIngrédient, la méthode getInsuffisants renvoie une liste des ingrédients qui sont en quantité insuffisante pour décompter le panier du stock. Cette liste est vide s'il y a assez en stock.
 \end{itemize}
 
+\section{Diagrammes de séquence}
+
+Quelques remarques générales:
+\begin{itemize}
+    \item La classe Affichage dans les diagrammes est une classe conceptuelle que nous avons utilisé par nécessité pour illustrer des procédures liées à l'interface graphique sans faire croire qu'elles font partie de la business logic. Elle n'existera pas probablement pas en pratique, ses détails sont laissés à l'implémentation.
+    \item Les classes DAO et la classe Affichage ne portent pas de deux-points parce que c'est la classe qui est appelée et pas un de ses objets.
+\end{itemize}
+Et maintenant, quelques remarques plus précises sur deux des diagrammes.
+
+\subsection{Confirmation du panier}
+Pour confirmer le panier, après avoir vérifié qu'il y a assez dans le stock, il faut s'assurer que le client a une commande ouverte associée. Dès lors, si commandeCourante n'existe pas ou que cette commande a été payée, il faut en créer une nouvelle, comme c'est illustré. Ensuite il faut créer les détails dans le modèle et décompter les ingrédients utilisés dans le stock.
+
+\subsection{Ajout au panier}
+Lorsqu'on ajoute une consommation au panier, elle est décomptée du stock local grâce à une simple boucle à travers les ingrédients qu'elle utilise. Aucune mesure n'est encore prise au niveau de la commande avant la confirmation.
+
 \end{document}
