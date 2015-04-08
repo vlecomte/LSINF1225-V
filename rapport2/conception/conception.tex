@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,11pt]{article}
 
 \usepackage{../../latex/mystyle}
 \usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
@@ -18,6 +18,14 @@ Notre plus grande difficulté de modélisation était de trouver un juste milieu
     \item \textbf{Modèle 2:}\\ Toute l'information de la base de donnée est stockée en local. Toutes les opérations de lecture et de modification se font en local. À chaque fois qu'une donnée est modifiée, une requête est envoyée pour l'actualiser sur la base de données, et dès qu'une modification par un autre utilisateur est détectée, elle est répercutée sur le modèle local. L'application se charge de tout et la base de données est en second plan pour mémoriser les données à long terme.
 \end{itemize}
 
-Le modèle 1 est celui qui demanderait le moins d'efforts parce que
+Le modèle 1 est celui qui demanderait le moins d'efforts parce que la base de données est déjà faite: il suffirait de rédiger des requêtes correctes pour toutes les opérations et la logique du programme serait faite.
+
+Toutefois, ce modèle entraînerait un nombre important de requêtes pour des opérations qui pourraient être faites entièrement en local, comme la gestion du panier, qui contient les consommations que le client a l'intention de consommer mais n'a pas encore envoyées aux serveurs. Il ne permet pas non plus de mémoriser des données telles la carte qui ne sont pas susceptibles de changer régulièrement et pourraient être enregistrée pour limiter les échanges avec la base de données. De plus, nous admettons qu'il serait bien dommage de se passer totalement de modèle orienté objet dans un cours dont c'est l'énoncé principal.
+
+Le modèle 2 demande plus d'efforts car il faut créer toute un structure orientée objet et toutes les fonctions permettant de synchroniser cette structure avec la base de données. Il a l'avantage de ne pas avoir besoin de communiquer avec la base de données pour des opérations qui peuvent se faire en local comme la gestion du panier.
+
+Toutefois, pour d'autres, comme le décompte d'un panier dans le stock, ce modèle risque d'envoyer une requête pour chaque consommation ajoutée alors que dans le modèle 1, c'est faisable en une seule requête. En effet, ce modèle n'utilise pas les capacités de calcul efficaces de la base de donnée et ne l'utilise que pour la mémorisation.
+
+Afin de limiter le nombre de requêtes tout en gardant une structure correcte et adaptable à n'importe quelle implémentation, il nous fallait isoler de la structure les accès à la base de données, pour s'assurer que les appels sont faits de la manière la plus efficace; et de l'autre côté avoir une structure représentant les données de manière suffisamment complète pour pouvoir faire les opérations les plus courantes, qui ne nécessitent pas d'actualiser la base de données, de manière totalement locale.
 
 \end{document}
