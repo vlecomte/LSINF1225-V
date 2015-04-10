@@ -14,8 +14,8 @@ Nous nous concentrons sur la réalisation du schéma UML et des diagrammes de s�
 
 Notre plus grande difficulté de modélisation était de trouver un juste milieu au niveau de la gestion des données, entre ces deux modèles:
 \begin{itemize}
-    \item \textbf{Modèle 1:}\\ Toute l'information, y compris les données temporaires, est stockée au niveau de la base de donnée, et aucune information n'est stockée en local. L'application se charge uniquement de l'interface graphique et de l'envoi/réception de données. Toute opération dans l'application entraîne une ou plusieurs requêtes.
-    \item \textbf{Modèle 2:}\\ Toute l'information de la base de donnée est stockée en local. Toutes les opérations de lecture et de modification se font en local. À chaque fois qu'une donnée est modifiée, une requête est envoyée pour l'actualiser sur la base de données, et dès qu'une modification par un autre utilisateur est détectée, elle est répercutée sur le modèle local. L'application se charge de tout et la base de données est en second plan pour mémoriser les données à long terme.
+    \item \textbf{Modèle 1:}\\ Toute l'information, y compris les données temporaires, est stockée au niveau de la base de données, et aucune information n'est stockée en local. L'application se charge uniquement de l'interface graphique et de l'envoi/réception de données. Toute opération dans l'application entraîne une ou plusieurs requêtes.
+    \item \textbf{Modèle 2:}\\ Toute l'information de la base de données est stockée en local. Toutes les opérations de lecture et de modification se font en local. À chaque fois qu'une donnée est modifiée, une requête est envoyée pour l'actualiser sur la base de données, et dès qu'une modification par un autre utilisateur est détectée, elle est répercutée sur le modèle local. L'application se charge de tout et la base de données est en second plan pour mémoriser les données à long terme.
 \end{itemize}
 
 Le modèle 1 est celui qui demanderait le moins d'efforts parce que la base de données est déjà faite: il suffirait de rédiger des requêtes correctes pour toutes les opérations et la logique du programme serait faite.
@@ -24,7 +24,7 @@ Toutefois, ce modèle entraînerait un nombre important de requêtes pour des op
 
 Le modèle 2 demande plus d'efforts car il faut créer toute un structure orientée objet et toutes les fonctions permettant de synchroniser cette structure avec la base de données. Il a l'avantage de ne pas avoir besoin de communiquer avec la base de données pour des opérations qui peuvent se faire en local comme la gestion du panier.
 
-Toutefois, pour d'autres, comme le décompte d'un panier dans le stock, ce modèle risque d'envoyer une requête pour chaque consommation ajoutée alors que dans le modèle 1, c'est faisable en une seule requête. En effet, ce modèle n'utilise pas les capacités de calcul efficaces de la base de donnée et ne l'utilise que pour la mémorisation.
+Toutefois, pour d'autres, comme le décompte d'un panier dans le stock, ce modèle risque d'envoyer une requête pour chaque consommation ajoutée alors que dans le modèle 1, c'est faisable en une seule requête. En effet, ce modèle n'utilise pas les capacités de calcul efficaces de la base de données et ne l'utilise que pour la mémorisation.
 
 Afin de limiter le nombre de requêtes tout en gardant une structure correcte et adaptable à n'importe quelle implémentation, il nous fallait isoler de la structure les accès à la base de données, pour s'assurer que les appels sont faits de la manière la plus efficace; et de l'autre côté avoir une structure représentant les données de manière suffisamment complète pour pouvoir faire les opérations les plus courantes, qui ne nécessitent pas d'actualiser la base de données, de manière tout à fait locale.
 
@@ -43,9 +43,9 @@ Précisons maintenant la structure en nous appuyant sur le schéma UML fourni. P
 
 \begin{itemize}
     \item Toutes les méthodes et tous les champs des classes DAO sont statiques (c'est la signification du soulignement proposé par Dia).
-    \item Nous d'utiliser à la fois les liens d'associations et les champs, en faisant démarrer le lien au niveau du champ. En effet, cela met en évidence de manière plus claire quel objet a accès à quel objet, et cela permet de donner une indication sur la visibilité du lien.
-    \item En général, à une classe du modèle correspond une classe DAO, qui va notamment créer les instances de la classe du modèle et modifier leurs valeurs dans la base de donnée.
-    \item N'ont été ajoutés dans les classes du modèle que les champs qui sont nécessaire aux fonctionnalités locales de l'application. Si ils ne sont utilisé que dans la base de donnée via les classes DAO, ils ne sont pas ajoutés.
+    \item Nous avons décidé d'utiliser à la fois les liens d'associations et les champs, en faisant démarrer le lien au niveau du champ. En effet, cela met en évidence de manière plus claire quel objet a accès à quel objet, et cela permet de donner une indication sur la visibilité du lien.
+    \item En général, à une classe du modèle correspond une classe DAO, qui va notamment créer les instances de la classe du modèle et modifier leurs valeurs dans la base de données.
+    \item N'ont été ajoutés dans les classes du modèle que les champs qui sont nécessaires aux fonctionnalités locales de l'application. Si ils ne sont utilisés que dans la base de données via les classes DAO, ils ne sont pas ajoutés.
     \item Les types qui ne sont pas des classes du modèle, comme String, Image, Nombre, Quantité, Booléen sont des types conceptuels qui sont laissés à l'implémentation. En effet, leurs types effectifs dépendront du langage utilisé.
     \item La classe Utilisateur représente tout utilisateur de l'application. Elle est abstraite parce que tout utilisateur est au moins un client. Cela a du sens de séparer Utilisateur de Client pour séparer les opérations de gestion de compte des opérations liées à la commande de boissons. Il ne contient pas le mot de passe car cette information est considérée comme sensible et laissée à la base de données, et donc à DAO
     \item Serveur hérite de Client parce qu'il peut aussi commander des boissons en tant que client et qu'il utilise aussi le système de panier de Client. Manager hérite de Serveur parce que le manager d'un bar peut aussi servir.
