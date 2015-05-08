@@ -8,7 +8,7 @@ CREATE TABLE "User"
 );
 INSERT INTO "User" VALUES('tiffany','karateswag22','tiffany@hotmail.be','customer');
 INSERT INTO "User" VALUES('jeff','ilovetiffany','jeff@hotmail.be','waiter');
-INSERT INTO "User" VALUES('joe','youllneverfindit','joe@hotmail.be','waiter');
+INSERT INTO "User" VALUES('joe','youllneverfindit','joe@hotmail.be','admin');
 
 DROP TABLE IF EXISTS "Order";
 CREATE TABLE "Order"
@@ -19,7 +19,7 @@ CREATE TABLE "Order"
     "DatePaid" INT
 );
 INSERT INTO "Order" VALUES(43,3,'tiffany',NULL);
-INSERT INTO "Order" VALUES(42,1,'tiffany','2012-12-21 11:53');
+INSERT INTO "Order" VALUES(42,1,'tiffany',strftime('%s','2015-05-07 11:53'));
 
 DROP TABLE IF EXISTS "Detail";
 CREATE TABLE "Detail"
@@ -30,15 +30,15 @@ CREATE TABLE "Detail"
     "DateDelivered" INT,
     "WaiterUsername" VARCHAR(255) REFERENCES "User"
 );
-INSERT INTO "Detail" VALUES(42,'maes25','11:45','11:47','jeff');
-INSERT INTO "Detail" VALUES(43,'gin_tonic','18:01',NULL,NULL);
-INSERT INTO "Detail" VALUES(42,'kriek','11:45','11:47','jeff');
-INSERT INTO "Detail" VALUES(42,'rum_coke','11:45','11:47','jeff');
-INSERT INTO "Detail" VALUES(42,'mazout','11:49','11:51','joe');
-INSERT INTO "Detail" VALUES(42,'coke','11:49','11:51','joe');
-INSERT INTO "Detail" VALUES(43,'coke','18:01',NULL,NULL);
-INSERT INTO "Detail" VALUES(43,'rum','18:01',NULL,NULL);
-INSERT INTO "Detail" VALUES(43,'rum','18:01',NULL,NULL);
+INSERT INTO "Detail" VALUES(42,'maes25',strftime('%s','2015-05-07 11:45'),strftime('%s','2015-05-07 11:47'),'jeff');
+INSERT INTO "Detail" VALUES(43,'gin_tonic',strftime('%s','2015-05-07 18:01'),NULL,NULL);
+INSERT INTO "Detail" VALUES(42,'kriek',strftime('%s','2015-05-07 11:45'),strftime('%s','2015-05-07 11:47'),'jeff');
+INSERT INTO "Detail" VALUES(42,'rum_coke',strftime('%s','2015-05-07 11:45'),strftime('%s','2015-05-07 11:47'),'jeff');
+INSERT INTO "Detail" VALUES(42,'mazout',strftime('%s','2015-05-07 11:49'),strftime('%s','2015-05-07 11:51'),'joe');
+INSERT INTO "Detail" VALUES(42,'coke',strftime('%s','2015-05-07 11:49'),strftime('%s','2015-05-07 11:51'),'joe');
+INSERT INTO "Detail" VALUES(43,'coke',strftime('%s','2015-05-07 18:01'),NULL,NULL);
+INSERT INTO "Detail" VALUES(43,'rum',strftime('%s','2015-05-07 18:01'),NULL,NULL);
+INSERT INTO "Detail" VALUES(43,'rum',strftime('%s','2015-05-07 18:01'),NULL,NULL);
 
 DROP TABLE IF EXISTS "Product";
 CREATE TABLE "Product"
@@ -64,10 +64,10 @@ CREATE TABLE "Type"
     "TypeName" VARCHAR(255) NOT NULL PRIMARY KEY,
     "Icon" VARCHAR(255) NOT NULL UNIQUE
 );
-INSERT INTO "Type" VALUES('type_beer','type_beer.png');
-INSERT INTO "Type" VALUES('type_cocktail','type_cocktail.png');
-INSERT INTO "Type" VALUES('type_soft','type_soft.png');
-INSERT INTO "Type" VALUES('type_spirit','type_spirit.png');
+INSERT INTO "Type" VALUES('type_beer','ic_type_beer');
+INSERT INTO "Type" VALUES('type_cocktail','ic_type_cocktail');
+INSERT INTO "Type" VALUES('type_soft','ic_type_soft');
+INSERT INTO "Type" VALUES('type_spirit','ic_type_spirit');
 
 DROP TABLE IF EXISTS "Description";
 CREATE TABLE "Description"
