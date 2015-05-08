@@ -1,0 +1,37 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{../../latex/mystyle}
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+
+\begin{document}
+
+\header{Implémentation Android}
+
+\section{Installation}
+
+Le programme se télécharge et s'installe avec Android Studio depuis notre repository github:
+\url{https://github.com/vlecomte/bartender}.
+Il est bien entendu possible d'accéder à la version soumise juste avant la deadline en faisant un checkout sur le commit correspondant.
+
+\section{Utilisation}
+
+Nous avons conçu l'application pour qu'elle soit le plus intuitive possible.
+Toutefois, une courte explication s'impose pour les données représentées par les différents types de graphes dans l'interface administrateur:
+\begin{itemize}
+    \item ``Waiter efficiency'': graphique camembert présentant la part des services effectués par chaque serveur sur une période.
+    \item ``Turnover evolution'': graphique à deux dimensions présentant l'évolution du chiffre d'affaires .
+    \item ``Best customers'': graphique camembert présentant la part du chiffre d'affaires apporté par chaque client.
+    \item ``Most popular drinks'': graphique camembert présentant la part des consommations que chaque boisson a apporté.
+\end{itemize}
+
+\section{Modifications de la base de données}
+
+\begin{itemize}
+    \item Afin d'internationaliser la base de données, nous devions ajouter des informations de traduction par rapport aux champs textuels de la base de données qui sont affichés directement dans l'application. Pour cela, nous avons créé trois nouvelles tables: \texttt{ProductDisplayName}, \texttt{IngredientDisplayName} et \texttt{UnitsDisplayName}. Le champ original est remplacé par un nom de code et la correspondance entre nom de code et nom d'affichage pour chaque langue est donnée par une entrée d'une de ces nouvelles tables. La nouvelle version de la base de données, sous la forme des fichiers \texttt{bartender-multilingue.sql} et \texttt{bartender-multilingue.sqlite}, est donnée en annexe à ce rapport.
+\end{itemize}
+
+\section{Documentation et propreté}
+
+Étant donné qu'il s'agit d'un prototype, la priorité n'a pas été donnée à la documentation ni, dans une certaine mesure, à la propreté et la concison du code. Toutefois
+
+\end{document}

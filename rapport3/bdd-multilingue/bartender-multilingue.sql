@@ -21,6 +21,8 @@ INSERT INTO "User" VALUES('charlotte','searchingforjoe','charlotte@hotmail.be','
 INSERT INTO "User" VALUES('amaury','123456789easy','am.mau.ry@gmail.be','customer');
 INSERT INTO "User" VALUES('georges','clooney','lacteur@hotmail.be','customer');
 INSERT INTO "User" VALUES('suzanne','onecoke','suzanne@hotmail.be','customer');
+INSERT INTO "User" VALUES('kmens','mysecretpassword','kim.mens@uclouvain.be','admin');
+INSERT INTO "User" VALUES('dsarkozi','mysecretpassword','david.sarkozi@uclouvain.be','admin');
 
 DROP TABLE IF EXISTS "Order";
 CREATE TABLE "Order"
@@ -234,10 +236,10 @@ CREATE TABLE "Ingredient"
 INSERT INTO "Ingredient" VALUES('ing_maes25',33,20,NULL,'units_bottle');
 INSERT INTO "Ingredient" VALUES('ing_maes33',26,10,50,'units_bottle');
 INSERT INTO "Ingredient" VALUES('ing_tonic',6,10,25,'units_bottle');
-INSERT INTO "Ingredient" VALUES('ing_gin',1.5,1,7,'units_litre');
-INSERT INTO "Ingredient" VALUES('ing_coke',3,10,50,'units_bottle');
+INSERT INTO "Ingredient" VALUES('ing_gin',1.5,NULL,NULL,'units_litre');
+INSERT INTO "Ingredient" VALUES('ing_coke',3,NULL,50,'units_bottle');
 INSERT INTO "Ingredient" VALUES('ing_fanta',22,10,50,'units_bottle');
-INSERT INTO "Ingredient" VALUES('ing_kriek',32,10,50,'units_bottle');
+INSERT INTO "Ingredient" VALUES('ing_kriek',32,10,NULL,'units_bottle');
 INSERT INTO "Ingredient" VALUES('ing_rum',7.2,1,10,'units_litre');
 
 DROP TABLE IF EXISTS "Usage";
