@@ -12,8 +12,20 @@ Nous allons présenter ici les modifications que nous avons faites en passant de
 \section{Internationalisation de la base de données}
 
 Comme mentionné dans le rapport 3 (implémentation Android), nous avons dû adapter la base de données à une approche multilingue.
-Nous avions déjà joint notre nouvelle base de données avec ses instructions de création; nous joignons maintenant à ce rapport-ci le schéma relationnel refait (fichier \texttt{relationnel-corrige.svg}). Nous avons décidé de garder les noms de champs existants en français pour mettre en évidence le fait que la structure principale du modèle présenté dans le rapport 1 n'a été en rien modifieé.
+Nous avions déjà joint notre nouvelle base de données avec ses instructions de création; nous joignons maintenant à ce rapport-ci le schéma relationnel refait (fichier \texttt{relationnel-corrige.pdf}). Nous avons décidé de garder les noms de champs existants en français pour mettre en évidence le fait que la structure principale du modèle présenté dans le rapport 1 n'a été en rien modifieé.
 
 \section{Modifications du schéma UML}
+
+Lors de l'implémentation, nous avons modifié quelques éléments mineurs du diagramme de classe : nous avons ajouté quelques opérations et modifié quelques autres. Nous joignons à ce rapport une version corrigée de l'ancien diagramme de séquence, \texttt{uml-dao-corrige.png} (principalement, nous avons enlevé les getters/setters non pertinent pour ce type de document) et une nouvelle version mettant en évidence les changements. Cette nouvelle version marque avec un \texttt{+} les opérations ajoutées, avec un \texttt{-} les opérations enlevées (rendues inutiles par d'autres) et avec un \texttt{*} les opérations modifiées.
+
+Passons rapidement en revue les raisons pour les différents changements:
+\begin{itemize}
+    \item \texttt{Utilisateur}: Nous avons ajouté le champ \texttt{motDePasse} pour permettre à l'utilisateur d'afficher le mot de passe actuel dans les paramètres d'utilisateur. De plus, nous imaginons qu'il sera utile plus tard pour effectuer des opérations en s'identifiant auprès du serveur central. Nous avons supprimé le champ \texttt{langue} car le système Android préconise que l'application s'adapte directement à la langue du téléphone.
+    \item \texttt{Client}: L'opération \texttt{viderPanier} n'existe plus dans l'interface dans client, car elle est appelée automatiquement quand on appelle \texttt{confirmerPanier}. L'opération \texttt{ouvrirCommande} a été ajoutée pour envelopper une procédure qui devait auparavant se faire directement via \texttt{DAOCommande}.
+    \item \texttt{Manager}: L'opération \texttt{changerGrade} peut se faire simplement et directement par un appel \texttt{setGrade} dans \texttt{DAOUtilisateur}. Nous avons gardé la classe Manager car le fait qu'un utilisateur l'instancie signifiait qu'il était manager, et parce que nous n'excluons pas qu'avec un ajout ultérieur de fonctionnalités, cette classe obtienne des méthodes propres et intéressantes comme celles de \texttt{Serveur}.
+    \item \texttt{Détail}: Le détail doit contenir son \texttt{idDétail} pour que l'on puisse modifier des informations qui y sont liées dans la base de données et la \texttt{dateAjouté} pour qu'elle puisse être affichée dans l'interface.
+    \item \texttt{Consommation}: Nous avons dû ajouter le \texttt{nomAffichage} pour la traduction de l'application tout en gardant le \texttt{nom} pour la base de données. Étant donné que nous n'avions besoin du type que pour son icône, nous avons changé \texttt{type} en \texttt{icôneType}.
+    \item \texttt{Ingrédient}: Nous avons ajouté \texttt{utilisationActuelle} pour retenir l'utilisation déduite par le panier tout en gardant la valeur réelle du stock pour l'afficher dans la consultation du stock. Nous avons ajouté deux opérations liées à cela: \texttt{getRestant} qui donne la différence entre le stock et l'utilisation panier, et \texttt{appliquerUtilisation} qui déduit l'utilisation du stock à la confirmation du panier.
+\end{itemize}
 
 \end{document}
